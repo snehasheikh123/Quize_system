@@ -19,8 +19,8 @@ include('../includes/sidebar.php');
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<div class='test-item'>
                         <div class='test-info'>
-                            <h3>" .htmlspecialchars($row['test_name']) . "</h3>
-                            <p>" .htmlspecialchars($row['description']) . "</p>
+                            <h3>".htmlspecialchars($row['test_name']) . "</h3>
+                            <p>".htmlspecialchars($row['description']) . "</p>
                         </div>
                         <div class='test-action'>
                             <a href='start_test.php?test_id=" . $row['test_id'] . "' class='start-btn'>Start Test</a>
