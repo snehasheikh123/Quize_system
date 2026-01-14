@@ -41,44 +41,45 @@ $result = $stmt->get_result();
     <h2>Start Test</h2>
 
     <form action="submit_test.php" method="POST">
-        <input type="hidden" name="test_id" value="<?php echo $test_id; ?>">
+    <input type="hidden" name="test_id" value="<?php echo $test_id; ?>">
 
-        <?php while ($row = $result->fetch_assoc()) { ?>
-            <div class="question-card">
-                <input type="hidden" name="question_id[]" value="<?php echo $row['question_id']; ?>">
-                <label class="question-text"><?php echo htmlspecialchars($row['question_text']); ?></label><br>
+    <?php while ($row = $result->fetch_assoc()) { ?>
+        <div class="question-card">
+            <input type="hidden" name="question_id[]" value="<?php echo $row['question_id']; ?>">
+            <label class="question-text"><?php echo htmlspecialchars($row['question_text']); ?></label><br>
 
-                <div class="options">
-                    <?php if (!empty($row['option_1'])) { ?>
-                        <label class="option">
-                            <input type="radio" name="answer_<?php echo $row['question_id']; ?>" value="<?php echo htmlspecialchars($row['option_1']); ?>">
-                            <?php echo htmlspecialchars($row['option_1']); ?>
-                        </label>
-                    <?php } ?>
-                    <?php if (!empty($row['option_2'])) { ?>
-                        <label class="option">
-                            <input type="radio" name="answer_<?php echo $row['question_id']; ?>" value="<?php echo htmlspecialchars($row['option_2']); ?>">
-                            <?php echo htmlspecialchars($row['option_2']); ?>
-                        </label>
-                    <?php } ?>
-                    <?php if (!empty($row['option_3'])) { ?>
-                        <label class="option">
-                            <input type="radio" name="answer_<?php echo $row['question_id']; ?>" value="<?php echo htmlspecialchars($row['option_3']); ?>">
-                            <?php echo htmlspecialchars($row['option_3']); ?>
-                        </label>
-                    <?php } ?>
-                    <?php if (!empty($row['option_4'])) { ?>
-                        <label class="option">
-                            <input type="radio" name="answer_<?php echo $row['question_id']; ?>" value="<?php echo htmlspecialchars($row['option_4']); ?>">
-                            <?php echo htmlspecialchars($row['option_4']); ?>
-                        </label>
-                    <?php } ?>
-                </div>
+            <div class="options">
+                <?php if (!empty($row['option_1'])) { ?>
+                    <label class="option">
+                        <input type="radio" name="answers[<?php echo $row['question_id']; ?>]" value="<?php echo htmlspecialchars($row['option_1']); ?>">
+                        <?php echo htmlspecialchars($row['option_1']); ?>
+                    </label>
+                <?php } ?>
+                <?php if (!empty($row['option_2'])) { ?>
+                    <label class="option">
+                        <input type="radio" name="answers[<?php echo $row['question_id']; ?>]" value="<?php echo htmlspecialchars($row['option_2']); ?>">
+                        <?php echo htmlspecialchars($row['option_2']); ?>
+                    </label>
+                <?php } ?>
+                <?php if (!empty($row['option_3'])) { ?>
+                    <label class="option">
+                        <input type="radio" name="answers[<?php echo $row['question_id']; ?>]" value="<?php echo htmlspecialchars($row['option_3']); ?>">
+                        <?php echo htmlspecialchars($row['option_3']); ?>
+                    </label>
+                <?php } ?>
+                <?php if (!empty($row['option_4'])) { ?>
+                    <label class="option">
+                        <input type="radio" name="answers[<?php echo $row['question_id']; ?>]" value="<?php echo htmlspecialchars($row['option_4']); ?>">
+                        <?php echo htmlspecialchars($row['option_4']); ?>
+                    </label>
+                <?php } ?>
             </div>
-        <?php } ?>
+        </div>
+    <?php } ?>
 
-        <button type="submit" class="btn-submit">Submit</button>
-    </form>
+    <button type="submit" class="btn-submit">Submit</button>
+</form>
+
 </div>
 
 <?php
